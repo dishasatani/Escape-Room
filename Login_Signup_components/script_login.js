@@ -28,7 +28,7 @@ function handleLogin(event) {
 
   if (usernameInput.value === "dishasatani@gmail.com" && passwordInput.value === "disha123") {
     // Redirect to the admin page
-    window.location.href = '/Admin/admin.html';
+    window.location.href = 'https://dishasatani.github.io/Escape-Room/Admin/admin.html';
   }
 
  else{
@@ -41,7 +41,7 @@ function handleLogin(event) {
       
         // Redirect to the home page or do something else
         // console.log(window.location.pathname)
-        window.location.href = 'Escape-Room/Home%20Page/Home.html';
+        window.location.href = 'https://dishasatani.github.io/Escape-Room/Home%20Page/Home.html';
         //  alert("Login successful!");
     
     } else {

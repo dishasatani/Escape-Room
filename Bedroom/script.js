@@ -1255,7 +1255,7 @@ function renderMenus() {
           "Congratulations!! You passed the level! Redirecting to Rewards Page...";
         myFunction();
         setTimeout(() => {
-			window.location.href = "/Bedroom/8.html";
+			window.location.href = "https://dishasatani.github.io/Escape-Room/Bedroom/8.html";
 		}, 5000);
       }
       if (isNewHighScore()) {

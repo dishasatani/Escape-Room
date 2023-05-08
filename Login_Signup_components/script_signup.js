@@ -49,7 +49,7 @@ function handleSignup(event) {
 
   // Redirect to the home page or do something else
   setTimeout(() => {
-    window.location.href = "/Home%20Page/Home.html";
+    window.location.href = "https://dishasatani.github.io/Escape-Room/Home%20Page/Home.html";
   }, 3000);
 }
 
