@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Admin Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+      /* Main styles */
+      body {
+        font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+          "Lucida Sans", Arial, sans-serif;
+        background-color: #f2f2f2;
+        margin: 0;
+        padding: 0;
+      }
+
+      h1 {
+        text-align: center;
+        margin-top: 2rem;
+      }
+
+      table {
+        margin: 50px auto;
+        border-collapse: collapse;
+        border: 2px solid #ddd;
+        width: 80%;
+      }
+
+      table th,
+      table td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+      }
+
+      table th {
+        background-color: #4caf50;
+        color: white;
+      }
+
+      table tr:nth-child(even) {
+        background-color: #f2f2f2;
+      }
+
+      table tr:hover {
+        background-color: #ddd;
+      }
+
+      button {
+        padding: 10px;
+        border-radius: 5px;
+        border: none;
+        background-color: #4caf50;
+        color: white;
+        font-size: 16px;
+        margin: 10px;
+        cursor: pointer;
+      }
+
+      .chart-container,
+      #leaderboard-container {
+        position: relative;
+        height: 300px;
+        margin: 0 auto;
+        margin-top: 3rem;
+        display: none;
+        margin-bottom: 2rem;
+        /* display: flex;
+        justify-content: center; */
+      }
+
+      .chart-container{
+        display: flex;
+        justify-content: center;
+        /* margin-bottom: 3rem; */
+      }
+
+      #quiz-chart {
+        width: 100%;
+        height: 100%;
+        /* margin: 0 auto; */
+      }
+
+      .buttons {
+        display: flex;
+        justify-content: center;
+      }
+
+      /* Media query for smaller screens */
+      @media screen and (max-width: 600px) {
+        table {
+          width: 100%;
+        }
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      /*header styling*/
+      header {
+        background-color: #000000;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        padding: 2px 5px;
+      }
+
+      /*icon sizing*/
+      header img {
+        width: 52px;
+        height: 52px;
+      }
+
+      /*nav button styling*/
+      nav ul {
+        list-style: none;
+      }
+
+      nav ul li {
+        display: inline-block;
+        text-transform: uppercase;
+        font-family: "Press Start 2P", cursive;
+        font-size: 1.5vh;
+      }
+
+      nav ul li a {
+        text-decoration: none;
+        color: #fff;
+      }
+
+      /*about button*/
+      .button-one {
+        background-color: #3bb273;
+        padding: 10px 2px;
+        border-radius: 10%;
+        box-shadow: -3px 3px 3px #339963;
+      }
+
+      /*projects button*/
+      .button-two {
+        background-color: #4d9de0;
+        padding: 10px 2px;
+        border-radius: 10%;
+        box-shadow: -3px 3px 3px #2f8dda;
+      }
+
+      /*blog button*/
+      .button-three {
+        background-color: #e15554;
+        padding: 10px 2px;
+        border-radius: 10%;
+        box-shadow: -3px 3px 3px #da2f2f;
+      }
+
+      /*contact button*/
+      .button-four {
+        background-color: #e1bc29;
+        padding: 10px 2px;
+        border-radius: 10%;
+        box-shadow: -3px 3px 3px #c4a31c;
+      }
+
+      /*button click hover effect*/
+      nav ul li:hover {
+        transform: scale(0.9, 0.9);
+      }
+      .logo {
+        width: 120px;
+        height: 50px;
+      }
+
+      /*animation for icon*/
+      .logo:hover {
+        animation: rumble 0.3s linear;
+      }
+
+      @keyframes rumble {
+        25% {
+          transform: rotate(10deg);
+        }
+        75% {
+          transform: rotate(-20deg);
+        }
+      }
+
+      #snes-box {
+        text-align: center;
+        margin-right: 100px;
+      }
+
+      #snes {
+        width: 70%;
+        height: 70%;
+        margin: 0px auto;
+      }
+
+      @media only screen and (min-width: 768px) {
+        header {
+          justify-content: space-between;
+        }
+
+        header img {
+          padding-left: 10px;
+          width: 56px;
+          height: 66px;
+        }
+
+        nav ul li {
+          padding: 10px 15px;
+          margin-right: 20px;
+          font-size: 1em;
+        }
+      }
+      @media only screen and (min-width: 1024px) {
+        header {
+          justify-content: space-between;
+        }
+
+        header img {
+          padding-left: 20px;
+          width: 72px;
+          height: 82px;
+        }
+
+        nav li {
+          padding: 10px 15px;
+          margin-right: 20px;
+          font-size: 1.2em;
+        }
+      }
+      .timer {
+        font-size: 2rem;
+        font-weight: bold;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        color: #fff;
+      }
+    </style>
+  </head>
+  <body>
+
+    <!-- Navbar -->
+    <header>
+      <!--navbar controller icon-->
+      <a href="../Living Room/livingroom.html">
+        <img
+          class="logo"
+          src="https://escaperoomthegame.com/_next/image?url=https%3A%2F%2Fcdn.escaperoomthegame.com%2Fupload%2Fglobal%2Fmenu%2Flogo.png&w=1920&q=75"
+          alt="logo"
+      /></a>
+      <!-- <span class="timer"></span> -->
+      <nav>
+        <ul>
+          <!--navbar buttons-->
+          <!--y button-->
+          <li class="button-one">
+            <a href="./aboutus.html" class="button-one" target="_blank">About Me</a>
+          </li>
+          <!--x button-->
+          <li class="button-three">
+            <a href="#l" class="button-three" onclick="redirectToPage()">User Guide</a>
+          </li>
+          <li class="button-two"><a href="#" class="button-two" onclick="goBack2()">Back</a></li>
+          <!--a button-->
+
+          <!--b button-->
+        </ul>
+      </nav>
+    </header>
+
+    <h1>Welcome Admin!</h1>
+    <h1>Quiz Results</h1>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Username</th>
+          <th>Password</th>
+          <th>Time Taken</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>aaryaahjolia@gmail.com</td>
+          <td>Aarya@123</td>
+          <td>8</td>
+        </tr>
+        <tr>
+          <td>meetsshah@gmail.com</td>
+          <td>msshahs</td>
+          <td>11</td>
+        </tr>
+        <tr>
+          <td>harshuls23@gmail.com</td>
+          <td>harshulshah@12</td>
+          <td>14</td>
+        </tr>
+        <tr>
+          <td>satanidisha@gmail.com</td>
+          <td>satani@2512</td>
+          <td>6</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="buttons">
+      <button id="show-graph-btn">Show Graph</button>
+      <button id="show-leaderboard-btn">Show Leaderboard</button>
+    </div>
+
+    <div class="chart-container" style="display: flex">
+      <canvas id="quiz-chart"></canvas>
+    </div>
+
+    <div id="leaderboard-container" style="display: none;"></div>
+
+    <script>
+      // Retrieve the data from the table
+      const table = document.querySelector("table");
+      const rows = table.querySelectorAll("tbody tr");
+      const data = {
+        labels: [],
+        datasets: [
+          {
+            label: "Time Taken to Answer (in minutes)",
+            data: [],
+            backgroundColor: "#2F4F4F",
+            borderWidth: 1,
+          },
+        ],
+      };
+      rows.forEach((row) => {
+        data.labels.push(row.querySelector("td:nth-child(1)").textContent);
+        data.datasets[0].data.push(
+          row.querySelector("td:nth-child(3)").textContent
+        );
+      });
+
+      // Create the chart and hide it by default
+      const chartContainer = document.querySelector(".chart-container");
+      const quizChart = new Chart(document.getElementById("quiz-chart"), {
+        type: "bar",
+        data: data,
+        options: {
+          responsive: true,
+          scales: {
+            yAxes: [
+              {
+                ticks: {
+                  beginAtZero: true,
+                },
+              },
+            ],
+          },
+        },
+      });
+      chartContainer.style.display = "none";
+
+      // Show the chart when the button is clicked
+      document
+        .getElementById("show-graph-btn")
+        .addEventListener("click", function () {
+          if(chartContainer.style.display==="none"){
+            chartContainer.style.display = "flex";
+            chartContainer.scrollIntoView({ behavior: "smooth" });
+          }
+          else{
+            chartContainer.style.display = "none";
+          }
+        });
+
+      // Show the leaderboard when the button is clicked
+      document
+        .getElementById("show-leaderboard-btn")
+        .addEventListener("click", function () {
+          // Retrieve the data from the table
+
+          const table = document.querySelector("table");
+          const rows = table.querySelectorAll("tbody tr");
+          const leaderboard = [];
+
+          // Populate the leaderboard array with objects containing the username and time taken
+          rows.forEach((row) => {
+            const username = row.querySelector("td:nth-child(1)").textContent;
+            const timeTaken = parseInt(
+              row.querySelector("td:nth-child(3)").textContent
+            );
+            leaderboard.push({ username: username, timeTaken: timeTaken });
+          });
+
+          // Sort the leaderboard array by time taken in ascending order
+          leaderboard.sort((a, b) => a.timeTaken - b.timeTaken);
+
+          // Create a new table to display the leaderboard
+          const leaderboardTable = document.createElement("table");
+          const leaderboardTableHead = document.createElement("thead");
+          const leaderboardTableHeadRow = document.createElement("tr");
+          const leaderboardTableHeadUsername = document.createElement("th");
+          const leaderboardTableHeadTimeTaken = document.createElement("th");
+          const leaderboardTableBody = document.createElement("tbody");
+
+          leaderboardTableHeadUsername.textContent = "Username";
+          leaderboardTableHeadTimeTaken.textContent = "Time Taken";
+
+          leaderboardTableHeadRow.appendChild(leaderboardTableHeadUsername);
+          leaderboardTableHeadRow.appendChild(leaderboardTableHeadTimeTaken);
+          leaderboardTableHead.appendChild(leaderboardTableHeadRow);
+          leaderboardTable.appendChild(leaderboardTableHead);
+
+          leaderboard.forEach((entry) => {
+            const leaderboardTableRow = document.createElement("tr");
+            const leaderboardTableRowUsername = document.createElement("td");
+            const leaderboardTableRowTimeTaken = document.createElement("td");
+
+            leaderboardTableRowUsername.textContent = entry.username;
+            leaderboardTableRowTimeTaken.textContent = entry.timeTaken;
+
+            leaderboardTableRow.appendChild(leaderboardTableRowUsername);
+            leaderboardTableRow.appendChild(leaderboardTableRowTimeTaken);
+            leaderboardTableBody.appendChild(leaderboardTableRow);
+          });
+
+          leaderboardTable.appendChild(leaderboardTableBody);
+          leaderboardTable.classList.add("leaderboard-table");
+
+          // Add the new leaderboard table to the leaderboard container and display it
+          const leaderboardContainer = document.getElementById(
+            "leaderboard-container"
+          );
+          leaderboardContainer.innerHTML = "";
+          leaderboardContainer.appendChild(leaderboardTable);
+          if(leaderboardContainer.style.display === "none"){
+            leaderboardContainer.style.display = "block";
+            chartContainer.scrollIntoView({ behavior: "smooth" });
+          }
+          else{
+            leaderboardContainer.style.display = "none";
+          }
+          // leaderboardContainer.style.display = "block";
+          // chartContainer.scrollIntoView({ behavior: "smooth" });
+        });
+    </script>
+    <script src="./navbar.js"></script>
+  </body>
+</html>

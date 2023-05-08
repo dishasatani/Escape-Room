@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Puzzle Wine Room</title>
+    <link rel="stylesheet" href="../Admin/navbar.css" />
+    <link rel="stylesheet" href="../Snackbar/Snackbar.css" />
+    <style>
+      body {
+        font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+          "Lucida Sans", Arial, sans-serif;
+        background-image: url("../Living Room/bg.jpg");
+        background-size: cover; /* or "contain" or other values */
+        background-repeat: no-repeat;
+      }
+
+      h1 {
+        text-align: center;
+        margin-top: 100px;
+        color: #f0f0f0;
+      }
+
+      table {
+        margin: 0 auto;
+        border-collapse: collapse;
+        box-shadow: 0 0 10px #ccc;
+      }
+
+      td {
+        width: 75px;
+        height: 75px;
+        text-align: center;
+        font-size: 24px;
+        font-weight: bold;
+        border: 2px solid #ccc;
+      }
+
+      td input[type="number"] {
+        width: 75px;
+        height: 75px;
+        border: none;
+        text-align: center;
+        font-size: 24px;
+        font-weight: bold;
+      }
+
+      td.correct {
+        background-color: #6dd47e;
+      }
+
+      td.incorrect {
+        background-color: #ff4f4f;
+      }
+      button[type="button"] {
+        display: block;
+        margin: 0 auto;
+        padding: 10px 20px;
+        background-color: #4285f4;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 18px;
+        font-weight: bold;
+        transition: all 0.3s ease;
+      }
+
+      button[type="button"]:hover {
+        background-color: #3367d6;
+      }
+      iframe {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        height: 60px;
+        border: none;
+        z-index: 1;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <!--navbar controller icon-->
+      <a href="../Living Room/livingroom.html">
+        <img
+          class="logo"
+          src="https://escaperoomthegame.com/_next/image?url=https%3A%2F%2Fcdn.escaperoomthegame.com%2Fupload%2Fglobal%2Fmenu%2Flogo.png&w=1920&q=75"
+          alt="logo"
+      /></a>
+      <span class="timer"></span>
+      <nav>
+        <ul>
+          <!--navbar buttons-->
+          <!--y button-->
+          <li class="button-one">
+            <a href="../Admin/aboutus.html" class="button-one" target="_blank"
+              >About Me</a
+            >
+          </li>
+          <!--x button-->
+          <li class="button-three">
+            <a
+              href="../Admin/guide.pdf"
+              target="_blank"
+              class="button-three"
+              onclick="redirectToPage()"
+              >User Guide</a
+            >
+          </li>
+          <li class="button-two">
+            <a href="#" class="button-two" onclick="goBack2()">Back</a>
+          </li>
+          <!--a button-->
+
+          <!--b button-->
+        </ul>
+      </nav>
+    </header>
+    <h1>
+      Here is a magic square. The numbers 1 to 9 are should be placed in the
+      small squares in such a way that no number is repeated and the sum of the
+      three digits column-wise, row-wise and diagonally is equal to 15.
+    </h1>
+    <form>
+      <table>
+        <tr>
+          <td><input type="number" name="r1c11" /></td>
+          <td><input type="number" name="r1c22" /></td>
+          <td><input type="number" name="r1c33" /></td>
+        </tr>
+        <tr>
+          <td><input type="number" name="r2c11" /></td>
+          <td><input type="number" name="r2c22" /></td>
+          <td><input type="number" name="r2c33" /></td>
+        </tr>
+        <tr>
+          <td><input type="number" name="r3c11" /></td>
+          <td><input type="number" name="r3c22" /></td>
+          <td><input type="number" name="r3c33" /></td>
+        </tr>
+      </table>
+      <br />
+      <button type="button" onclick="checkSquaree()">Submit</button>
+    </form>
+    <div id="snackbar"></div>
+    <script>
+      function checkSquaree() {
+        // Get all input values
+        var r1c11 = Number(document.getElementsByName("r1c11")[0].value);
+        var r1c22 = Number(document.getElementsByName("r1c22")[0].value);
+        var r1c33 = Number(document.getElementsByName("r1c33")[0].value);
+        var r2c11 = Number(document.getElementsByName("r2c11")[0].value);
+        var r2c22 = Number(document.getElementsByName("r2c22")[0].value);
+        var r2c33 = Number(document.getElementsByName("r2c33")[0].value);
+        var r3c11 = Number(document.getElementsByName("r3c11")[0].value);
+        var r3c22 = Number(document.getElementsByName("r3c22")[0].value);
+        var r3c33 = Number(document.getElementsByName("r3c33")[0].value);
+
+        // Calculate sums
+        var row1 = r1c11 + r1c22 + r1c33;
+        var row2 = r2c11 + r2c22 + r2c33;
+        var row3 = r3c11 + r3c22 + r3c33;
+        var col1 = r1c11 + r2c11 + r3c11;
+        var col2 = r1c22 + r2c22 + r3c22;
+        var col3 = r1c33 + r2c33 + r3c33;
+        var diag1 = r1c11 + r2c22 + r3c33;
+        var diag2 = r1c33 + r2c22 + r3c11;
+
+        // 438 951 276
+
+        // Check if all sums are equal to 15
+        if (
+          row1 === 15 &&
+          row2 === 15 &&
+          row3 === 15 &&
+          col1 === 15 &&
+          col2 === 15 &&
+          col3 === 15 &&
+          diag1 === 15 &&
+          diag2 === 15
+        ) {
+          // alert("Congratulations! You have a magic square!");
+          document.getElementById("snackbar").innerText =
+            "Congratulations! You have a magic square. Redirecting to your number...";
+          myFunction();
+          setTimeout(() => {
+            window.location.href = "/Wineroom/9.html";
+          }, 10000);
+        } else {
+          // alert("Sorry, this is not a magic square.");
+          document.getElementById("snackbar").innerText =
+            "Sorry, this is not a magic square.";
+          myFunction();
+          document.getElementById("result-image").src = "";
+        }
+
+        // Reset the form
+        document.getElementById("magic-square-form").reset();
+      }
+
+      function myFunction() {
+        var x = document.getElementById("snackbar");
+        x.className = "show";
+        setTimeout(function () {
+          x.className = x.className.replace("show", "");
+        }, 10000);
+      }
+    </script>
+    <script src="../Admin/navbar.js"></script>
+  </body>
+</html>

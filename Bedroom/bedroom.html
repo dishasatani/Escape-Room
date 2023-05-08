@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bedroom</title>
+    <script src="../../js/ios-orientationchange-fix.min.js"></script>
+    <link rel="stylesheet" href="../Snackbar/Snackbar.css" />
+    <style>
+      body {
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-image: url("../Living Room/bg.jpg");
+        background-size: cover; /* or "contain" or other values */
+        background-repeat: no-repeat;
+      }
+
+      .container {
+        height: calc(100vh - 60px);
+        display: flex;
+        /* margin-top: 55.5px; */
+        justify-content: center;
+        align-items: center;
+      }
+      img {
+        max-width: 100%;
+        max-height: 100%;
+      }
+      iframe {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        height: 60px;
+        border: none;
+        z-index: 1;
+      }
+    </style>
+    <link rel="stylesheet" href="../Admin/navbar.css" />
+  </head>
+  <body>
+    <header>
+      <!--navbar controller icon-->
+      <a href="../Living Room/livingroom.html">
+        <img
+          class="logo"
+          src="https://escaperoomthegame.com/_next/image?url=https%3A%2F%2Fcdn.escaperoomthegame.com%2Fupload%2Fglobal%2Fmenu%2Flogo.png&w=1920&q=75"
+          alt="logo"
+      /></a>
+      <span class="timer"></span>
+      <nav>
+        <ul>
+          <!--navbar buttons-->
+          <!--y button-->
+          <li class="button-one">
+            <a href="../Admin/aboutus.html" class="button-one" target="_blank"
+              >About Me</a
+            >
+          </li>
+          <!--x button-->
+          <li class="button-three">
+            <a
+              href="../Admin/guide.pdf"
+              target="_blank"
+              class="button-three"
+              onclick="redirectToPage()"
+              >User Guide</a
+            >
+          </li>
+          <li class="button-two">
+            <a href="#" class="button-two" onclick="goBack2()">Back</a>
+          </li>
+          <!--a button-->
+
+          <!--b button-->
+        </ul>
+      </nav>
+    </header>
+
+    <div class="container">
+      <img src="./bed room.jpg" usemap="#image_map" />
+      <map name="image_map">
+        <area
+          alt=""
+          title=""
+          href="./bedroom2.html"
+          coords="726,400,835,476"
+          shape="rect"
+        />
+        <area
+          alt=""
+          title=""
+          href="../Living Room/livingroom.html"
+          coords="122,105,353,612"
+          shape="rect"
+        />
+      </map>
+    </div>
+    <div id="snackbar">asdsd</div>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="../jQuery/jquery.rwdImageMaps.min.js"></script>
+    <script>
+      $(document).ready(function (e) {
+        $("img[usemap]").rwdImageMaps();
+
+        $("area").on("click", function () {});
+      });
+      function myFunction() {
+        var x = document.getElementById("snackbar");
+        x.className = "show";
+        setTimeout(function () {
+          x.className = x.className.replace("show", "");
+        }, 5000);
+      }
+
+      // function showAlert() {
+      // alert("Find The Odd Pillow for clue!!.");
+      document.getElementById("snackbar").innerText =
+        "Find The Odd Pillow for clue!!";
+      myFunction();
+      // }
+    </script>
+    <script src="../Admin/navbar.js"></script>
+  </body>
+</html>

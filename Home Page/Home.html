@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home Page | Escape Room</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        background-image: url("./bg.jpg");
+        background-size: cover; /* or "contain" or other values */
+        background-repeat: no-repeat;
+        /* filter: blur(8px); */
+        /* opacity: 0.3; */
+      }
+      .image_container {
+        background-color: rgba(0, 0, 70, 0.618);
+        color: white;
+        padding: 3rem;
+        border-radius: 1rem;
+        font-size: 1.2rem;
+        font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+          "Lucida Sans", Arial, sans-serif;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+      }
+
+      .margin {
+        margin-bottom: 3rem;
+      }
+
+      a {
+        text-decoration: none;
+        border: 2px solid rgb(54, 255, 181);
+        padding: 0.6rem;
+        border-radius: 0.6rem;
+        color: rgb(54, 255, 181);
+        font-weight: bold;
+      }
+
+      a:hover {
+        color: black;
+        background-color: rgb(54, 255, 181);
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      window.onload = function () {
+        document.getElementById("my_audio").play();
+      };
+    </script>
+
+        <audio id="my_audio" src="./horror.mp3" loop="loop"></audio>
+    <div class="image_container">
+      <h1>Welcome to Escape Room!</h1>
+      <h3>Click on 'Start the Game' button to start the game.</h3>
+      <h3>
+        <span style="color: red">Remember: </span>Complete all the puzzles in
+        shortest time (there will be a timer) and don't forget to read the user
+        guide (Link can be found in the top row).
+      </h3>
+      <h3 class="margin">Have fun!</h3>
+
+      <a href="../Living Room/livingroom.html">Start the Game</a>
+    </div>
+  </body>
+</html>

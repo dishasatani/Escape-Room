@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Living Room</title>
+    <link rel="stylesheet" href="../Snackbar/Snackbar.css" />
+    <style>
+      body {
+        font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+          "Lucida Sans", Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-image: url("./bg.jpg");
+        background-size: cover; /* or "contain" or other values */
+        background-repeat: no-repeat;
+      }
+
+      .container {
+        height: calc(100vh - 60px);
+        display: flex;
+        /* margin-top: 55.5px; */
+        justify-content: center;
+        align-items: center;
+      }
+      img {
+        max-width: 100%;
+        max-height: 100%;
+      }
+      iframe {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        height: 60px;
+        border: none;
+        z-index: 1;
+      }
+    </style>
+    <link rel="stylesheet" href="../Admin/navbar.css" />
+  </head>
+  <body>
+    <header>
+      <!--navbar controller icon-->
+      <a href="../Living Room/livingroom.html">
+        <img
+          class="logo"
+          src="https://escaperoomthegame.com/_next/image?url=https%3A%2F%2Fcdn.escaperoomthegame.com%2Fupload%2Fglobal%2Fmenu%2Flogo.png&w=1920&q=75"
+          alt="logo"
+      /></a>
+      <span class="timer"></span>
+      <nav>
+        <ul>
+          <!--navbar buttons-->
+          <!--y button-->
+          <li class="button-one">
+            <a href="../Admin/aboutus.html" class="button-one" target="_blank"
+              >About Me</a
+            >
+          </li>
+          <!--x button-->
+          <li class="button-three">
+            <a
+              href="../Admin/guide.pdf"
+              target="_blank"
+              class="button-three"
+              onclick="redirectToPage()"
+              >User Guide</a
+            >
+          </li>
+          <li class="button-two">
+            <a href="#" class="button-two" onclick="goBack2()">Back</a>
+          </li>
+          <!--a button-->
+
+          <!--b button-->
+        </ul>
+      </nav>
+    </header>
+
+    <div class="container">
+      <img src="./living room.jpg" usemap="#image_map" />
+
+      <map name="image_map">
+        <area
+          alt=""
+          title=""
+          href="../Bedroom/bedroom.html"
+          coords="936,441,1052,721"
+          shape="rect"
+          target="_self"
+        />
+        <area
+          alt=""
+          title=""
+          href="../Library/library.html"
+          coords="170,127,360,667"
+          shape="rect"
+          target="_self"
+        />
+        <area
+          alt=""
+          title=""
+          href="../Kitchen/kitchen.html"
+          coords="873,898,1083,1258"
+          shape="rect"
+          target="_self"
+        />
+        <area
+          alt=""
+          title=""
+          href="../Wineroom/wineroom.html"
+          coords="8,875,277,1256"
+          shape="rect"
+          target="_self"
+        />
+        <area
+          alt=""
+          title=""
+          href="../Treasure_Box/treasurebox.html"
+          coords="549,694,815,807"
+          shape="rect"
+          target="_self"
+        />
+      </map>
+    </div>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="../jQuery/jquery.rwdImageMaps.min.js"></script>
+
+    <div id="snackbar">
+      Living room have 4 doors and 1 trasur box click to explore.
+    </div>
+    <script>
+      $(document).ready(function (e) {
+        $("img[usemap]").rwdImageMaps();
+
+        $("area").on("click", function () {});
+      });
+      var showMessage = true;
+
+      function myFunction() {
+        var x = document.getElementById("snackbar");
+        x.className = "show";
+        setTimeout(function () {
+          x.className = x.className.replace("show", "");
+        }, 10000);
+      }
+
+      function showAlert() {
+        if (showMessage) {
+          // alert("Living room have 4 doors and 1 trasur box click to explore.");
+          document.getElementById("snackbar").innerText =
+            "Living room have 4 doors and 1 Treasure box. Click to explore the doors, Don't forget to read the user guide!";
+          myFunction();
+          setTimeout(() => {
+            showMessage = false;
+          }, 10000);
+        }
+      }
+    </script>
+    <script src="../Admin/navbar.js"></script>
+  </body>
+</html>

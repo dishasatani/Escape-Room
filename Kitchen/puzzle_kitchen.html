@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Kitchen Puzzle</title>
+    <link rel="stylesheet" href="../Admin/navbar.css" />
+    <link rel="stylesheet" href="../Snackbar/Snackbar.css" />
+    <style>
+      .button-table {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        width: 400px;
+        margin: 0 auto;
+      }
+
+      .button-table button {
+        width: 6rem;
+        height: 3rem;
+        margin: 10px;
+        background-color: #2196f3;
+        border: none;
+        border-radius: 10px;
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s ease-in-out;
+      }
+
+      .button-table button:hover {
+        background-color: #0d8bf2;
+      }
+
+      .button-table button.correct {
+        background-color: #000000;
+      }
+
+      .button-table button.correct:hover {
+        background-color: #444444;
+      }
+
+      .button-table button.incorrect {
+        background-color: #000000;
+      }
+
+      .button-table button.incorrect:hover {
+        background-color: #444444;
+      }
+
+      .button-table h2 {
+        text-align: center;
+      }
+
+      .center {
+        text-align: center;
+      }
+
+      .watch-video {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #2196f3;
+        border: none;
+        border-radius: 10px;
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s ease-in-out;
+        text-decoration: none;
+      }
+
+      .watch-video:hover {
+        background-color: #0d8bf2;
+      }
+      #hint-button {
+        display: block;
+        margin: 20px auto;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        background-color: #2196f3;
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s ease-in-out;
+      }
+      body {
+        font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+          "Lucida Sans", Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-image: url("../Living Room/bg.jpg");
+        background-size: cover; /* or "contain" or other values */
+        background-repeat: no-repeat;
+      }
+      #hint-button:hover {
+        background-color: #0d8bf2;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <!--navbar controller icon-->
+      <a href="../Living Room/livingroom.html">
+        <img
+          class="logo"
+          src="https://escaperoomthegame.com/_next/image?url=https%3A%2F%2Fcdn.escaperoomthegame.com%2Fupload%2Fglobal%2Fmenu%2Flogo.png&w=1920&q=75"
+          alt="logo"
+      /></a>
+      <span class="timer"></span>
+      <nav>
+        <ul>
+          <!--navbar buttons-->
+          <!--y button-->
+          <li class="button-one">
+            <a href="../Admin/aboutus.html" class="button-one" target="_blank"
+              >About Me</a
+            >
+          </li>
+          <!--x button-->
+          <li class="button-three">
+            <a
+              href="../Admin/guide.pdf"
+              target="_blank"
+              class="button-three"
+              onclick="redirectToPage()"
+              >User Guide</a
+            >
+          </li>
+          <li class="button-two">
+            <a href="#" class="button-two" onclick="goBack2()">Back</a>
+          </li>
+          <!--a button-->
+
+          <!--b button-->
+        </ul>
+      </nav>
+    </header>
+    <h1 class="center" style="margin-top: 2.5rem; color: white">
+      Watch the following video and select which 3 ingredient is not used in
+      this video?
+    </h1>
+    <h3 class="center" style="color: #f0f0f0">
+      (You have 5 chance to guess all three correct answer)
+    </h3>
+    <br />
+    <div class="center">
+      <a
+        href="https://www.youtube.com/watch?v=PmNtyk8pVRE"
+        target="_blank"
+        class="watch-video"
+        >Watch Video</a
+      >
+    </div>
+    <br />
+    <div class="button-table">
+      <button class="correct">Corn Flour</button>
+      <button class="incorrect">Chilled Water</button>
+      <button class="incorrect">Oil</button>
+      <button class="incorrect">Lemon juice</button>
+      <button class="incorrect">Powdered sugar</button>
+      <button class="incorrect">Vanilla essence</button>
+      <button class="incorrect">Salt</button>
+      <button class="incorrect">Cocoa powder</button>
+      <button class="incorrect">Maida</button>
+      <button class="incorrect">Baking soda</button>
+      <button class="incorrect">Dark chocolate</button>
+      <button class="incorrect">Butter</button>
+      <button class="correct">Cheese</button>
+      <button class="incorrect">Maida</button>
+      <button class="correct">Basil leaves</button>
+    </div>
+    <div id="snackbar">
+      Living room have 4 doors and 1 trasur box click to explore.
+    </div>
+    <button id="hint-button">Hint</button>
+    <script>
+      const buttons = document.querySelectorAll(".button-table button");
+      const correctButtons = document.querySelectorAll(
+        ".button-table button.correct"
+      );
+      const hintButton = document.querySelector("#hint-button");
+      const hintMessage = document.querySelector("#hint-message");
+      let correctCount = 0;
+      let clickCount = 0;
+
+      buttons.forEach((button) => {
+        button.addEventListener("click", () => {
+          clickCount++;
+          if (clickCount > 4) {
+            // alert("You have exceeded the maximum number of clicks!");
+            document.getElementById("snackbar").innerText =
+              "You have exceeded the maximum number of clicks! Reloading...";
+            myFunction();
+            setTimeout(() => {
+              location.reload();
+            }, 2000);
+          }
+
+          if (button.classList.contains("correct")) {
+            button.disabled = true;
+            button.style.opacity = "0.5";
+            correctCount++;
+
+            if (correctCount === correctButtons.length) {
+              // alert("Congratulations, you clicked on all correct buttons!");
+              document.getElementById("snackbar").innerText =
+                "Congratulations, you clicked on all correct buttons! Redirecting to your number...";
+              myFunction();
+              setTimeout(() => {
+                window.location.href = "2.html";
+              }, 5000);
+            }
+          }
+        });
+      });
+
+      function myFunction() {
+        var x = document.getElementById("snackbar");
+        x.className = "show";
+        setTimeout(function () {
+          x.className = x.className.replace("show", "");
+        }, 10000);
+      }
+
+      hintButton.addEventListener("click", () => {
+        // alert("Correct answer are corn flour,cheese and basil leaves!");
+        document.getElementById("snackbar").innerText =
+          "Correct answer are corn flour,cheese and basil leaves!!";
+        myFunction();
+      });
+    </script>
+    <script src="../Admin/navbar.js"></script>
+  </body>
+</html>

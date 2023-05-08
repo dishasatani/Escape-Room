@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Your Score</title>
+    <link rel="stylesheet" href="../Admin/navbar.css" />
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+          "Lucida Sans", Arial, sans-serif;
+        background-image: url("../Living Room/bg.jpg");
+        background-size: cover;
+        /* or "contain" or other values */
+        background-repeat: no-repeat;
+      }
+	  h1{
+		color: white;
+		text-align: center;
+		margin-top: 5rem;
+	  }
+	  img{
+		width: 60%;
+		position: relative;
+		left: 50%;
+		transform: translateX(-50%);
+	  }
+    </style>
+  </head>
+  <body>
+    <header>
+      <!--navbar controller icon-->
+      <a href="../Living Room/livingroom.html">
+        <img
+          class="logo"
+          src="https://escaperoomthegame.com/_next/image?url=https%3A%2F%2Fcdn.escaperoomthegame.com%2Fupload%2Fglobal%2Fmenu%2Flogo.png&w=1920&q=75"
+          alt="logo"
+      /></a>
+      <!-- <span class="timer"></span> -->
+      <nav>
+        <ul>
+          <!--navbar buttons-->
+          <!--y button-->
+          <li class="button-one">
+            <a href="../Admin/aboutus.html" class="button-one" target="_blank"
+              >About Me</a
+            >
+          </li>
+          <!--x button-->
+          <li class="button-three">
+            <a
+              href="../Admin/guide.pdf"
+              target="_blank"
+              class="button-three"
+              onclick="redirectToPage()"
+              >User Guide</a
+            >
+          </li>
+          <li class="button-two">
+            <a href="#" class="button-two" onclick="goBack2()">Back</a>
+          </li>
+          <!--a button-->
+
+          <!--b button-->
+        </ul>
+      </nav>
+    </header>
+	<img src="./Congrats.png" alt="">
+    <h1>Time Taken by you : <span id="timer"></span></h1>
+	<h1>Congratulations, You completed all the levels of the Escape Room game!</h1>
+
+
+    <script>
+      const timerElem = document.getElementById("timer");
+      const storedSeconds = localStorage.getItem("timer") || 0;
+      timerElem.textContent = new Date(storedSeconds * 1000)
+        .toISOString()
+        .substr(11, 8);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>About Me</title>
+  <!---Custom Css File!--->
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .about-us {
+      height: 100vh;
+      width: 100%;
+      padding: 90px 0;
+      background: #ddd;
+    }
+
+    .pic {
+      height: auto;
+      width: 302px;
+      border-radius: 50%;
+    }
+
+    .about {
+      width: 1130px;
+      max-width: 85%;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+    }
+
+    .text {
+      width: 540px;
+    }
+
+    .text h2 {
+      font-size: 90px;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .text h5 {
+      font-size: 22px;
+      font-weight: 500;
+      margin-bottom: 20px;
+    }
+
+    span {
+      color: red;
+    }
+
+    .text p {
+      font-size: 18px;
+      line-height: 25px;
+      letter-spacing: 1px;
+    }
+
+    .data {
+      margin-top: 30px;
+    }
+
+    .hire {
+      font-size: 18px;
+      background: red;
+      color: #fff;
+      text-decoration: none;
+      border: none;
+      padding: 8px 25px;
+      border-radius: 6px;
+      transition: 0.5s;
+    }
+
+    .hire:hover {
+      background: #000;
+      border: 1px solid red;
+    }
+
+    iframe {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      width: 100%;
+      height: 60px;
+      border: none;
+      z-index: 1;
+    }
+    * {
+        margin: 0;
+        padding: 0;
+      }
+
+      /*header styling*/
+      header {
+        background-color: #000000;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        padding: 2px 5px;
+      }
+
+      /*icon sizing*/
+      header img {
+        width: 52px;
+        height: 52px;
+      }
+
+      /*nav button styling*/
+      nav ul {
+        list-style: none;
+      }
+
+      nav ul li {
+        display: inline-block;
+        text-transform: uppercase;
+        font-family: "Press Start 2P", cursive;
+        font-size: 1.5vh;
+      }
+
+      nav ul li a {
+        text-decoration: none;
+        color: #fff;
+      }
+
+      /*about button*/
+      .button-one {
+        background-color: #3bb273;
+        padding: 10px 2px;
+        border-radius: 10%;
+        box-shadow: -3px 3px 3px #339963;
+      }
+
+      /*projects button*/
+      .button-two {
+        background-color: #4d9de0;
+        padding: 10px 2px;
+        border-radius: 10%;
+        box-shadow: -3px 3px 3px #2f8dda;
+      }
+
+      /*blog button*/
+      .button-three {
+        background-color: #e15554;
+        padding: 10px 2px;
+        border-radius: 10%;
+        box-shadow: -3px 3px 3px #da2f2f;
+      }
+
+      /*contact button*/
+      .button-four {
+        background-color: #e1bc29;
+        padding: 10px 2px;
+        border-radius: 10%;
+        box-shadow: -3px 3px 3px #c4a31c;
+      }
+
+      /*button click hover effect*/
+      nav ul li:hover {
+        transform: scale(0.9, 0.9);
+      }
+      .logo {
+        width: 120px;
+        height: 50px;
+      }
+
+      /*animation for icon*/
+      .logo:hover {
+        animation: rumble 0.3s linear;
+      }
+
+      @keyframes rumble {
+        25% {
+          transform: rotate(10deg);
+        }
+        75% {
+          transform: rotate(-20deg);
+        }
+      }
+
+      #snes-box {
+        text-align: center;
+        margin-right: 100px;
+      }
+
+      #snes {
+        width: 70%;
+        height: 70%;
+        margin: 0px auto;
+      }
+
+      @media only screen and (min-width: 768px) {
+        header {
+          justify-content: space-between;
+        }
+
+        header img {
+          padding-left: 10px;
+          width: 56px;
+          height: 66px;
+        }
+
+        nav ul li {
+          padding: 10px 15px;
+          margin-right: 20px;
+          font-size: 1em;
+        }
+      }
+      @media only screen and (min-width: 1024px) {
+        header {
+          justify-content: space-between;
+        }
+
+        header img {
+          padding-left: 20px;
+          width: 72px;
+          height: 82px;
+        }
+
+        nav li {
+          padding: 10px 15px;
+          margin-right: 20px;
+          font-size: 1.2em;
+        }
+      }
+      .timer {
+        font-size: 2rem;
+        font-weight: bold;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        color: #fff;
+      }
+  </style>
+
+</head>
+
+<body>
+  <header>
+    <!--navbar controller icon-->
+    <a href="../Living Room/livingroom.html">
+      <img class="logo"
+        src="https://escaperoomthegame.com/_next/image?url=https%3A%2F%2Fcdn.escaperoomthegame.com%2Fupload%2Fglobal%2Fmenu%2Flogo.png&w=1920&q=75"
+        alt="logo" /></a>
+    <!-- <span class="timer"></span> -->
+    <nav>
+      <ul>
+        <!--navbar buttons-->
+        <!--y button-->
+        <li class="button-one">
+          <a href="./aboutus.html" class="button-one" target="_blank">About Me</a>
+        </li>
+        <!--x button-->
+        <li class="button-three">
+          <a href="#l" class="button-three" onclick="redirectToPage()">User Guide</a>
+        </li>
+        <li class="button-two"><a href="#" class="button-two" onclick="goBack2()">Back</a></li>
+        <!--a button-->
+
+        <!--b button-->
+      </ul>
+    </nav>
+  </header>
+  <section class="about-us">
+    <div class="about">
+      <img src="./disha.jpg" class="pic">
+      <div class="text">
+        <h2>About Me</h2>
+        <h5>Front-end Developer & <span>Designer</span></h5>
+        <p>I'm Disha Satani, Currently pursuing 3rd Year of B.Tech Computer Science Engineering From Nirma University.
+          I am Front end Developer and Desiger. I have done this Escape Room Project as a part of my assignment for
+          eLitmus. </p>
+        <div class="data">
+          <a href="mailto:dishasatani@gmail.com" class="hire">Contact Me</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+
+</html>
