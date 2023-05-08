@@ -41,7 +41,7 @@ function handleLogin(event) {
       
         // Redirect to the home page or do something else
         // console.log(window.location.pathname)
-        window.location.href = '/Home%20Page/Home.html';
+        window.location.href = 'Escape-Room/Home%20Page/Home.html';
         //  alert("Login successful!");
     
     } else {
