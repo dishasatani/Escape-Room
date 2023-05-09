@@ -16,7 +16,7 @@
       }
 
       .container {
-        height: calc(100vh - 60px);
+        height: calc(100vh - 80px);
         display: flex;
         /* margin-top: 55.5px; */
         justify-content: center;
@@ -98,14 +98,14 @@
     <div id="snackbar">
       Living room have 4 doors and 1 trasur box click to explore.
     </div>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script src="../jQuery/jquery.rwdImageMaps.min.js"></script>
     <script>
-      $(document).ready(function (e) {
-        $("img[usemap]").rwdImageMaps();
+      // $(document).ready(function (e) {
+      //   $("img[usemap]").rwdImageMaps();
 
-        $("area").on("click", function () {});
-      });
+      //   $("area").on("click", function () {});
+      // });
 
       function myFunction() {
         var x = document.getElementById("snackbar");
@@ -120,5 +120,6 @@
           myFunction();
     </script>
     <script src="../Admin/navbar.js"></script>
+    <script src="../jQuery/func.js"></script>
   </body>
 </html>
