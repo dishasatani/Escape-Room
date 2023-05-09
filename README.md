@@ -31,9 +31,11 @@ of analytical thinking and attention to detail.
 Overall, online escape room game that can be played solo can be a fun and engaging way to assess a
 variety of soft skills, while also providing an entertaining and challenging gaming experience.
 
-## All Possible ways to solve the problem
+
 
 ## Steps to Set up Project
+
+Download Code on your system and run the index.html.
 
 ## Implemented Features
 
