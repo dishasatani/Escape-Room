@@ -68,7 +68,7 @@
         justify-content: center; */
       }
 
-      .chart-container{
+      .chart-container {
         display: flex;
         justify-content: center;
         /* margin-bottom: 3rem; */
@@ -240,7 +240,6 @@
     </style>
   </head>
   <body>
-
     <!-- Navbar -->
     <header>
       <!--navbar controller icon-->
@@ -256,13 +255,17 @@
           <!--navbar buttons-->
           <!--y button-->
           <li class="button-one">
-            <a href="./aboutus.html" class="button-one" target="_blank">About Me</a>
+            <a href="./aboutus.html" class="button-one" target="_blank"
+              >About Me</a
+            >
           </li>
           <!--x button-->
-          <li class="button-three">
+          <!-- <li class="button-three">
             <a href="#l" class="button-three" onclick="redirectToPage()">User Guide</a>
+          </li> -->
+          <li class="button-two">
+            <a href="#" class="button-two" id="logout">Log Out</a>
           </li>
-          <li class="button-two"><a href="#" class="button-two" onclick="goBack2()">Back</a></li>
           <!--a button-->
 
           <!--b button-->
@@ -314,9 +317,13 @@
       <canvas id="quiz-chart"></canvas>
     </div>
 
-    <div id="leaderboard-container" style="display: none;"></div>
+    <div id="leaderboard-container" style="display: none"></div>
 
     <script>
+      document.getElementById("logout").addEventListener("click", () => {
+        window.location.href = 'https://dishasatani.github.io/Escape-Room/login.html';
+      });
+
       // Retrieve the data from the table
       const table = document.querySelector("table");
       const rows = table.querySelectorAll("tbody tr");
@@ -362,11 +369,10 @@
       document
         .getElementById("show-graph-btn")
         .addEventListener("click", function () {
-          if(chartContainer.style.display==="none"){
+          if (chartContainer.style.display === "none") {
             chartContainer.style.display = "flex";
             chartContainer.scrollIntoView({ behavior: "smooth" });
-          }
-          else{
+          } else {
             chartContainer.style.display = "none";
           }
         });
@@ -431,11 +437,10 @@
           );
           leaderboardContainer.innerHTML = "";
           leaderboardContainer.appendChild(leaderboardTable);
-          if(leaderboardContainer.style.display === "none"){
+          if (leaderboardContainer.style.display === "none") {
             leaderboardContainer.style.display = "block";
             chartContainer.scrollIntoView({ behavior: "smooth" });
-          }
-          else{
+          } else {
             leaderboardContainer.style.display = "none";
           }
           // leaderboardContainer.style.display = "block";
