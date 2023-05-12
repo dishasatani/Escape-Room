@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Admin Dashboard</title>
+    <title>LeaderBoard</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
       /* Main styles */
@@ -33,7 +33,7 @@
       }
 
       table th {
-        background-color: #4caf50;
+        background-color: #af4c4c;
         color: white;
       }
 
@@ -49,7 +49,7 @@
         padding: 10px;
         border-radius: 5px;
         border: none;
-        background-color: #4caf50;
+        background-color: #af4c4c;
         color: white;
         font-size: 16px;
         margin: 10px;
@@ -259,50 +259,50 @@
               >About Me</a
             >
           </li>
-          <!--x button-->
+          <!-- x button-->
           <!-- <li class="button-three">
             <a href="#l" class="button-three" onclick="redirectToPage()">User Guide</a>
           </li> -->
           <li class="button-two">
             <a href="#" class="button-two" id="logout">Log Out</a>
           </li>
-          <!--a button-->
+          <!--a button -->
 
           <!--b button-->
         </ul>
       </nav>
     </header>
 
-    <h1>Welcome Admin!</h1>
+    
     <h1>Quiz Results</h1>
 
     <table>
       <thead>
         <tr>
           <th>Username</th>
-          <th>Password</th>
+          
           <th>Time Taken</th>
         </tr>
       </thead>
       <tbody>
         <tr>
           <td>aaryaahjolia@gmail.com</td>
-          <td>Aarya@123</td>
+         
           <td>1200</td>
         </tr>
         <tr>
           <td>meetsshah@gmail.com</td>
-          <td>msshahs</td>
+          
           <td>1000</td>
         </tr>
         <tr>
           <td>harshuls23@gmail.com</td>
-          <td>harshulshah@12</td>
+          
           <td>690</td>
         </tr>
         <tr>
           <td>satanidisha@gmail.com</td>
-          <td>satani@2512</td>
+         
           <td>600</td>
         </tr>
       </tbody>
@@ -340,7 +340,7 @@ const data = {
 rows.forEach((row) => {
   data.labels.push(row.querySelector("td:nth-child(1)").textContent);
   data.datasets[0].data.push(
-    row.querySelector("td:nth-child(3)").textContent
+    row.querySelector("td:nth-child(2)").textContent
   );
 });
 
@@ -381,7 +381,7 @@ function updateChart() {
   rows.forEach((row) => {
     data.labels.push(row.querySelector("td:nth-child(1)").textContent);
     data.datasets[0].data.push(
-      row.querySelector("td:nth-child(3)").textContent
+      row.querySelector("td:nth-child(2)").textContent
     );
   });
 
@@ -400,11 +400,11 @@ const timeTaken = localStorage.getItem("timer");
 
 const newRow = tbody.insertRow();
 const usernameCell = newRow.insertCell();
-const passwordCell = newRow.insertCell();
+
 const timeTakenCell = newRow.insertCell();
 
 usernameCell.textContent = username;
-passwordCell.textContent = pass;
+
 timeTakenCell.textContent = timeTaken;
 
 updateChart();
@@ -436,7 +436,7 @@ updateChart();
           rows.forEach((row) => {
             const username = row.querySelector("td:nth-child(1)").textContent;
             const timeTaken = parseInt(
-              row.querySelector("td:nth-child(3)").textContent
+              row.querySelector("td:nth-child(2)").textContent
             );
             leaderboard.push({ username: username, timeTaken: timeTaken });
           });

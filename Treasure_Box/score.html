@@ -25,6 +25,23 @@
 		left: 50%;
 		transform: translateX(-50%);
 	  }
+    .leaderboard-button {
+  display: block;
+  margin: auto;
+  padding: 10px 20px;
+  background-color: #af4c4c;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.leaderboard-button:hover {
+  background-color: #8e3e3e;
+}
+
     </style>
   </head>
   <body>
@@ -41,11 +58,19 @@
         <ul>
           <!--navbar buttons-->
           <!--y button-->
+
+          <li class="button-four">
+            <a href="../Admin/leaderboard.html" class="button-four" target="_blank"
+              >LeaderBoard</a
+            >
+          </li>
           <li class="button-one">
             <a href="../Admin/aboutus.html" class="button-one" target="_blank"
               >About Me</a
             >
           </li>
+         
+
           <!--x button-->
           <li class="button-three">
             <a
@@ -68,6 +93,7 @@
 	<img src="./Congrats.png" alt="">
     <h1>Time Taken by you : <span id="timer"></span></h1>
 	<h1>Congratulations, You completed all the levels of the Escape Room game!</h1>
+  <button class="leaderboard-button" onclick="location.href='../Admin/leaderboard.html'">Leaderboard</button>
 
 
     <script>

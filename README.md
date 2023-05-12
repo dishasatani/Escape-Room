@@ -43,6 +43,7 @@ Download Code on your system and run the index.html.
 
 - [x] 5 Clues
 - [x] 1 Solution
+- [x] 2 Dead ends
 - [x] Admin Dashboard
 - [x] Data analysis using graph
 - [x] User Leaderboard
