@@ -35,6 +35,14 @@ variety of soft skills, while also providing an entertaining and challenging gam
 
 https://dishasatani.github.io/Escape-Room/
 
+## Solution PDF
+
+https://drive.google.com/file/d/1138P2OIdj529S0SqYQHlpMHU19yMKTdX/view?usp=share_link
+
+OR
+
+Read "Elitmus_Escape Room Document.pdf" from Repository.
+
 ## Steps to Set up Project
 
 Download Code on your system and run the index.html.
